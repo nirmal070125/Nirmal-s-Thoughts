@@ -54,7 +54,14 @@ Pre-requisite
 - Download and extract [Apache ActiveMQ 5.10.0 or later](http://activemq.apache.org/) and start ActiveMQ - ``` {ACTIVEMQ_HOME}$ ./bin/activemq start ```
   Please make sure mqtt transport connector is enabled in the ActiveMQ configuration file; **{ACTIVEMQ_HOME}/conf/activemq.xml**.
 
-- Build Stratos 4.1.0 - M1 code from this **4.1.0-m1** tag, copy (from {**STRATOS_SOURCE}/products/stratos/modules/distribution/target/**) and extract the binary **apache-stratos-4.1.0-SNAPSHOT.zip** to a preferred directory (**STRATOS_HOME**). Start Stratos using ``` {STRATOS_HOME}$ ./bin/stratos.sh start ``` command.
+- Build Stratos 4.1.0 - M1 code from this **4.1.0-m1** tag, copy (from {**STRATOS_SOURCE}/products/stratos/modules/distribution/target/**) and extract the binary **apache-stratos-4.1.0-SNAPSHOT.zip** to a preferred directory (**STRATOS_HOME**). 
+
+- Change the **MgtHostName** and **HostName** elements' values in **{STRATOS_HOME}/repository/conf/carbon.xml** such that they point to the private IP address of your local machine.
+
+- Change the **dataBridgeConfiguration.thriftDataReceiver.hostName** element's value in **{STRATOS_HOME}/repository/conf/data-bridge/data-bridge-config.xml** to the private IP address of your machine.
+
+- Start Stratos using ``` {STRATOS_HOME}$ ./bin/stratos.sh start ``` command.
+
 
 Testing M1
 ----------
