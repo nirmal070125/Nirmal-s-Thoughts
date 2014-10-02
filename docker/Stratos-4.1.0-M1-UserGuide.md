@@ -1,6 +1,14 @@
 Stratos 4.1.0 - M1 - Developer Preview - User Guide
 =========
 
+Table of Content
+----------
+
+- Main Features
+- Pre-requisite
+- Testing M1
+- Troubleshooting Guide
+
 
 Main Features
 -------------
