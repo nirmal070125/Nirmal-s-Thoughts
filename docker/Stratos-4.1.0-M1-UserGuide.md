@@ -29,11 +29,11 @@ Pre-requisite
     * SSH to master node (See the Troubleshooting Guide)
     * Pull Stratos PHP Docker Image from **TODO** into master node.
     ``` sh 
-    docker pull 54.254.64.141:5000/stratos-php
+    docker pull apachestratos/php-4.1.0-m1
     ```
     * Save Stratos PHP Docker Image as a tar ball
     ```sh
-    docker save -o stratos-php-latest.tar  54.254.64.141:5000/stratos-php
+    docker save -o stratos-php-latest.tar  apachestratos/php-4.1.0-m1
     ```     
     * Scp the Stratos PHP Docker Image tar ball to minion-1 and minion-2
     * SSH to minion-1 and minion-2 (See Troubleshooting guide)
