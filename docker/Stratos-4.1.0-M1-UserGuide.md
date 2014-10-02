@@ -187,7 +187,7 @@ curl -X POST -H "Content-Type: application/json" -d @'php-docker-cartridge.json'
        ],
        "container": [
         {
-          "imageName": "apachestratos/stratos-php",
+          "imageName": "apachestratos/php-4.1.0-m1",
           "property": [
             {
              "name": "prop-name",
