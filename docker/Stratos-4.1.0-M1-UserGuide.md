@@ -82,7 +82,7 @@ curl -X POST -H "Content-Type: application/json" -d @"kub-register.json" -k  -u 
       "kubernetesMaster": {
                   "hostId" : "KubHostMaster1",
                   "hostname" : "master.dev.kubernetes.example.org",
-                  "hostIpAddress" : "127.0.0.1",
+                  "hostIpAddress" : "172.17.8.100",
                   "property" : [
                       {
         	             "name": "prop1",
@@ -104,7 +104,22 @@ curl -X POST -H "Content-Type: application/json" -d @"kub-register.json" -k  -u 
       	      {
                      "hostId" : "KubHostSlave1",
                      "hostname" : "slave1.dev.kubernetes.example.org",
-                     "hostIpAddress" : "127.0.0.1",
+                     "hostIpAddress" : "172.17.8.101",
+                     "property" : [
+                         {
+        	                 "name": "prop1",
+        	                 "value": "val1"
+      	                 },
+                         {
+        	                 "name": "prop2",
+        	                 "value": "val2"
+      	                 }
+                     ]
+                },
+                {
+                     "hostId" : "KubHostSlave1",
+                     "hostname" : "slave1.dev.kubernetes.example.org",
+                     "hostIpAddress" : "172.17.8.102",
                      "property" : [
                          {
         	                 "name": "prop1",
