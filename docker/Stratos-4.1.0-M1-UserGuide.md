@@ -171,6 +171,8 @@ curl -X POST -H "Content-Type: application/json" -d @'php-docker-cartridge.json'
 curl -X POST -H "Content-Type: application/json" -d @php-subscription.json -k -v -u admin:admin "https://localhost:9443/stratos/admin/cartridge/subscribe"
 ```
 **php-subscription.json**
+
+-Don't forgot to replace MB_IP and CEP_IP with your local machine IP in the following json
 ```javascript
 {
     "cartridgeType": "php",
