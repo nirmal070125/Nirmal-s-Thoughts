@@ -4,7 +4,7 @@ Stratos 4.1.0 - M1 - Developer Preview - User Guide
 Table of Content
 ----------
 
-- Main Features
+- [Main Features](#main-features)
 - Pre-requisite
 - Testing M1
 - Jira List
