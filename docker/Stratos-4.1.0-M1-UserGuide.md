@@ -26,7 +26,21 @@ Pre-requisite
     * Navigate to the cloned repository directory (**SETUP_HOME**).
     * Run ``` up.sh ``` script file - ``` {SETUP_HOME}$ ./up.sh ``` (You might have to use ```sudo``` in some cases.
     * Above command will start-up 4 VMs, namely discovery, master, minion-1 and minion-2.
-    * Pull Stratos PHP Docker Image from **TODO** into master node. **TODO add steps**
+    * SSH to master node (See the Troubleshooting Guide)
+    * Pull Stratos PHP Docker Image from **TODO** into master node.
+    ``` sh 
+    docker pull 54.254.64.141:5000/stratos-php
+    ```
+    * Save Stratos PHP Docker Image as a tar ball
+    ```sh
+    docker save -o stratos-php-latest.tar  54.254.64.141:5000/stratos-php
+    ```     
+    * Scp the Stratos PHP Docker Image tar ball to minion-1 and minion-2
+    * SSH to minion-1 and minion-2 (See Troubleshooting guide)
+    * Load Stratos PHP Docker Image from tar ball in minion-1 and minion-2
+    ```sh
+    docker load -i stratos-php-latest.tar
+    ```   
 
 - Download and extract [Apache ActiveMQ 5.10.0 or later](http://activemq.apache.org/) and start ActiveMQ - ``` {ACTIVEMQ_HOME}$ ./bin/activemq start ```
   Please make sure mqtt transport connector is enabled in the ActiveMQ configuration file; **{ACTIVEMQ_HOME}/conf/activemq.xml**.
@@ -470,4 +484,3 @@ Status
 success
 ```
 - if you unsubscribe to the cartridge, replicationControllers, pods and containers for that service cluster will be wiped out
-
