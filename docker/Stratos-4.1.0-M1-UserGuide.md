@@ -24,23 +24,32 @@ Pre-requisite
     * Install [Vagrant 1.6.5](https://www.vagrantup.com/) and [Oracle VM VirtualBox Manager 4.3.14](https://www.virtualbox.org/) in your local machine.
     * Get a GIT clone of [Vagrant Kubernetes Setup](https://github.com/nirmal070125/vagrant-kubernetes-setup) onto your machine.
     * Navigate to the cloned repository directory (**SETUP_HOME**).
-    * Run ``` up.sh ``` script file - ``` {SETUP_HOME}$ ./up.sh ``` (You might have to use ```sudo``` in some cases.
+    * Run ``` up.sh ``` script file - ``` {SETUP_HOME}$ ./up.sh ``` (You might have to use ```sudo``` in some cases.)
     * Above command will start-up 4 VMs, namely discovery, master, minion-1 and minion-2.
-    * SSH to master node (See the Troubleshooting Guide)
-    * Pull Stratos PHP Docker Image from **TODO** into master node.
+    * SSH to master node ; ``` {SETUP_HOME}$ vagrant ssh master ```
+    * Pull Stratos PHP Docker Image from DockerHub into master node or into the local machine.
     ``` sh 
     docker pull apachestratos/php-4.1.0-m1
     ```
-    * Save Stratos PHP Docker Image as a tar ball
+    * Import downloaded Stratos PHP Docker image as a tarball.
     ```sh
     docker save -o stratos-php-latest.tar  apachestratos/php-4.1.0-m1
     ```     
-    * Scp the Stratos PHP Docker Image tar ball to minion-1 and minion-2
-    * SSH to minion-1 and minion-2 (See Troubleshooting guide)
-    * Load Stratos PHP Docker Image from tar ball in minion-1 and minion-2
+    * SCP the Stratos PHP Docker Image tarball to minion-1 and minion-2. You can find the private key file which you can use to SCP, in the **{SETUP_HOME}/ssh.config** file, against **IdentityFile** attribute. 
+    ``` sh
+    scp -i ~/.vagrant.d/insecure_private_key stratos-php-latest.tar core@172.17.8.101:.
+    ```
+    * SSH to minion-1 (``` {SETUP_HOME}$ vagrant ssh minion-1 ```) and minion-2 (``` {SETUP_HOME}$ vagrant ssh minion-2```)
+    * Load Stratos PHP Docker Image from tarball to minion-1 and minion-2
     ```sh
     docker load -i stratos-php-latest.tar
     ```   
+    * Verify that the image is properly loaded by issuing ```docker images``` in each node;
+    ```sh
+    core@master ~ $ docker images
+    REPOSITORY                   TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+    apachestratos/php-4.1.0-m1   latest              0fff8e5ac572        3 hours ago         771.7 MB
+    ```
 
 - Download and extract [Apache ActiveMQ 5.10.0 or later](http://activemq.apache.org/) and start ActiveMQ - ``` {ACTIVEMQ_HOME}$ ./bin/activemq start ```
   Please make sure mqtt transport connector is enabled in the ActiveMQ configuration file; **{ACTIVEMQ_HOME}/conf/activemq.xml**.
