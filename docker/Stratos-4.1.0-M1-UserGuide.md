@@ -28,6 +28,7 @@ Pre-requisite
     * Pull Stratos PHP Docker Image from **TODO** into master node. **TODO add steps**
 
 - Download and extract [Apache ActiveMQ 5.10.0 or later](http://activemq.apache.org/) and start ActiveMQ - ``` {ACTIVEMQ_HOME}$ ./bin/activemq start ```
+  Please make sure mqtt transport connector is enable in the activemq under conf/activemq.conf.
 
 - (**Run setup.sh???** ) Build Stratos 4.1.0 - M1 code from this **FIXME** [tag](), copy (from {**STRATOS_SOURCE}/products/stratos/modules/distribution/target/**) and extract the binary **apache-stratos-4.1.0-SNAPSHOT.zip** to a preferred directory (**STRATOS_HOME**).
 
@@ -197,4 +198,19 @@ curl -X POST -H "Content-Type: application/json" -d 'myPhp' -k -v -u admin:admin
 
 **5. Accessing PHP service**
 
+
+**6. MQTT configurations**
+
+MQTT configuration file - mqtttopic.properties
+```
+Configuration values
+
+mqtturl -> URL of the activemq message broker.(tcp://<mqttserverip>:<mqttport>)
+clientID -> This is to identifier the clients who connect with the message broker.(stratos)
+tempfilelocation -> This is the file location to used by the mqtt subscriber file persistence.(/tmp)
+```
+
+
+
 **TODO**
+
