@@ -212,7 +212,7 @@ curl -X POST -H "Content-Type: application/json" -d @php-subscription.json -k -v
 ```javascript
 {
     "cartridgeType": "php",
-    "alias": "myPhp",
+    "alias": "myphp",
     "commitsEnabled": "false",
     "property": [
             {
@@ -221,7 +221,7 @@ curl -X POST -H "Content-Type: application/json" -d @php-subscription.json -k -v
             },
 	    {
              "name": "KUBERNETES_REPLICAS_MIN",
-             "value": "2"
+             "value": "3"
             },       
             {
              "name": "payload_parameter.MB_IP",
@@ -246,7 +246,7 @@ curl -X POST -H "Content-Type: application/json" -d @php-subscription.json -k -v
 ```
 **4. Unsubscribe from a Cartridge**
 ```sh
-curl -X POST -H "Content-Type: application/json" -d 'myPhp' -k -v -u admin:admin "https://localhost:9443/stratos/admin/cartridge/unsubscribe"
+curl -X POST -H "Content-Type: application/json" -d 'myphp' -k -v -u admin:admin "https://localhost:9443/stratos/admin/cartridge/unsubscribe"
 ```
 
 **5. Accessing PHP service**
