@@ -71,7 +71,7 @@ Testing M1
 - Curl Command
 
 ``` sh 
-curl -X POST -H "Content-Type: application/json" -d @"kub-register.json" -k  -u admin:admin "https://127.0.0.1:9443/stratos/admin/kubernetes/deploy/group"
+curl -X POST -H "Content-Type: application/json" -d @"kub-register.json" -k  -u admin:admin "https://localhost:9443/stratos/admin/kubernetes/deploy/group"
 ```
 
 **kub-register.json**
