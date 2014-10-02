@@ -322,3 +322,71 @@ core@minion-1 ~ $ docker kill 6f5ba525f9ab
 6f5ba525f9ab
 ```
 - another conatiner will be created within few seconds
+
+
+**12. How to get info of a specific replicationController as a json?**
+
+- ssh to the master node
+```sh
+ kubecfg -json get /replicationControllers/REPLICATION-CONTROLLER-ID
+```
+- output
+```"
+core@master ~ $  kubecfg -json get /replicationControllers/test2.php.domain
+{"kind":"ReplicationController","id":"test2.php.domain","creationTimestamp":"2014-10-02T07:44:58Z","resourceVersion":6701,"apiVersion":"v1beta1","desiredState":{"replicas":2,"replicaSelector":{"name":"test2.php.domain"},"podTemplate":{"desiredState":{"manifest":{"version":"v1beta1","id":"","volumes":null,"containers":[{"name":"test2-apachestratos-org","image":"54.254.64.141:5000/stratos-php","ports":[{"name":"tcp80","hostPort":80,"containerPort":80,"protocol":"tcp"}],"env":[{"name":"SERVICE_NAME","key":"SERVICE_NAME","value":"php"},{"name":"HOST_NAME","key":"HOST_NAME","value":"test2.apachestratos.org"},{"name":"MULTITENANT","key":"MULTITENANT","value":"false"},{"name":"TENANT_ID","key":"TENANT_ID","value":"-1234"},{"name":"TENANT_RANGE","key":"TENANT_RANGE","value":"-1234"},{"name":"CARTRIDGE_ALIAS","key":"CARTRIDGE_ALIAS","value":"test2"},{"name":"CLUSTER_ID","key":"CLUSTER_ID","value":"test2.php.domain"},{"name":"CARTRIDGE_KEY","key":"CARTRIDGE_KEY","value":"uLBSXhS3Kzos5xVe"},{"name":"REPO_URL","key":"REPO_URL","value":"null"},{"name":"PORTS","key":"PORTS","value":"80"},{"name":"PROVIDER","key":"PROVIDER","value":"apache"},{"name":"PUPPET_IP","key":"PUPPET_IP","value":"127.0.0.1"},{"name":"PUPPET_HOSTNAME","key":"PUPPET_HOSTNAME","value":"puppet.raj.org"},{"name":"PUPPET_DNS_AVAILABLE","key":"PUPPET_DNS_AVAILABLE","value":"null"},{"name":"PUPPET_ENV","key":"PUPPET_ENV","value":"stratos"},{"name":"DEPLOYMENT","key":"DEPLOYMENT","value":"default"},{"name":"CEP_PORT","key":"CEP_PORT","value":"7611"},{"name":"COMMIT_ENABLED","key":"COMMIT_ENABLED","value":"false"},{"name":"MB_PORT","key":"MB_PORT","value":"1883"},{"name":"MB_IP","key":"MB_IP","value":"172.17.42.1"},{"name":"CEP_IP","key":"CEP_IP","value":"172.17.42.1"},{"name":"MEMBER_ID","key":"MEMBER_ID","value":"test2.php.domaindb8e4a24-17e8-40a2-ad85-e0d0ca127887"},{"name":"LB_CLUSTER_ID","key":"LB_CLUSTER_ID"},{"name":"NETWORK_PARTITION_ID","key":"NETWORK_PARTITION_ID"},{"name":"KUBERNETES_CLUSTER_ID","key":"KUBERNETES_CLUSTER_ID","value":"KubGrp1"},{"name":"KUBERNETES_MASTER_IP","key":"KUBERNETES_MASTER_IP","value":"127.0.0.1"},{"name":"KUBERNETES_PORT_RANGE","key":"KUBERNETES_PORT_RANGE","value":"4000-5000"}]}],"restartPolicy":{"always":{}}}},"labels":{"name":"test2.php.domain"}}},"currentState":{"replicas":2,"podTemplate":{"desiredState":{"manifest":{"version":"","id":"","volumes":null,"containers":null,"restartPolicy":{}}}}},"labels":{"name":"test2.php.domain"}}
+```
+
+**12. How to get update a specific replicationController?**
+
+- ssh to the master node
+- get the replication controller info as a json as above and save it to a file
+```sh
+ kubecfg -json get /replicationControllers/REPLICATION-CONTROLLER-ID >> rep-controller.json
+```
+- edit the rep-controller.json (for example, set replicas to 0)
+- update the replicationController
+```sh
+ kubecfg -c rep-controller.json update /replicationControllers/REPLICATION-CONTROLLER-ID
+```
+- output
+```sh
+core@master ~ $ kubecfg -c raj.json update /replicationControllers/test2.php.domain
+ID                  Image(s)                         Selector                Replicas
+test2.php.domain    54.254.64.141:5000/stratos-php   name=test2.php.domain   0
+```
+- it will delete all the pods imediately
+
+
+**13. How to delete a pod?**
+
+- ssh to the master node
+- get the pod ID using ```kubecfg list /pods```
+```sh
+kubecfg delete pods/POD-ID
+```
+- output
+```sh
+core@master ~ $ kubecfg delete pods/3ed5c5a6-4a0a-11e4-91b7-08002794b041
+I1002 08:01:25.351501 02112 request.go:292] Waiting for completion of /operations/67
+Status
+success
+```
+
+**14. How to delete a replicationController?**
+
+- ssh to the master node
+- get the replicationController ID using ```kubecfg list /replicationControllers```
+```sh
+kubecfg delete replicationControllers/REPLICATION-CONTROLLER-ID
+```
+- output
+```sh
+core@master ~ $ kubecfg delete /replicationControllers/test2.php.domain
+I1002 08:32:47.187198 02150 request.go:292] Waiting for completion of /operations/86
+Status
+success
+```
+- if you unsubscribe to the cartridge, replicationControllers, pods and containers for that service cluster will be wiped out
+
+
+
