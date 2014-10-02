@@ -21,7 +21,7 @@ Pre-requisite
 
 - Download and extract [Apache ActiveMQ 5.10.0 or later](http://activemq.apache.org/) and start ActiveMQ - ``` {ACTIVEMQ_HOME}$ ./bin/activemq start ```
 
-- (*** Run setup.sh??? *** ) Build Stratos 4.1.0 - M1 code from this **FIXME** [tag](), copy (from {**STRATOS_SOURCE}/products/stratos/modules/distribution/target/**) and extract the binary **apache-stratos-4.1.0-SNAPSHOT.zip** to a preferred directory (**STRATOS_HOME**).
+- (** Run setup.sh??? ** ) Build Stratos 4.1.0 - M1 code from this **FIXME** [tag](), copy (from {**STRATOS_SOURCE}/products/stratos/modules/distribution/target/**) and extract the binary **apache-stratos-4.1.0-SNAPSHOT.zip** to a preferred directory (**STRATOS_HOME**).
 
 Testing M1
 ----------
@@ -95,7 +95,7 @@ curl -X POST -H "Content-Type: application/json" -d @"kub-register.json" -k  -u 
  curl  -k  -u admin:admin "https://localhost:9443/stratos/admin/kubernetes/group/KubGrp1"
 ```
 
-**2. Deploy a Docker Cartridge **
+**2. Deploy a Docker Cartridge**
 
 - Curl Command
 
