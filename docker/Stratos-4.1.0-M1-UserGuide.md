@@ -234,10 +234,6 @@ bf39a4c4...	172.17.8.101	-
 ```
 
 
-
-
-
-
 **5. How to list the available replication controllers?**
 
 - ssh to master node
@@ -258,7 +254,7 @@ test2.php.domain    54.254.64.141:5000/stratos-php     name=php         2
 ```sh
 kubecfg list /pods
 ```
--output
+- output
 ```sh
 core@master ~ $ kubecfg list /pods
 ID                                     Image(s)     Host                Labels                              Status
@@ -286,7 +282,7 @@ systemctl restart scheduler
 ```sh
 docker ps
 ```
--output
+- output
 ```sh
 core@master ~ $ docker ps
 CONTAINER ID        IMAGE                        COMMAND                CREATED             STATUS   PORTS
@@ -300,7 +296,7 @@ a3f787d0a7ae        kubernetes/pause:latest      "/pause"               2 minute
 ```sh
 docker inspect CONTAINER-ID | grep IPAddress
 ```
--output
+- output
 ```sh
 core@master ~ $ docker inspect a3f787d0a7ae | grep IPAddress
 IPAddress": "10.100.56.3",
@@ -312,7 +308,7 @@ IPAddress": "10.100.56.3",
 ```sh
 ssh root@CONTAINER-IPAddress
 ```
-enter ```g``` for password
+- enter ```g``` for password
 
 **11. How to kill a docker container?**
 
@@ -320,10 +316,9 @@ enter ```g``` for password
 ```sh
 docker kill CONTAINER-ID
 ```
--output
+- output
 ```sh
 core@minion-1 ~ $ docker kill 6f5ba525f9ab
 6f5ba525f9ab
 ```
--Another conatiner will be created within few seconds
-
+- another conatiner will be created within few seconds
