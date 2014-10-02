@@ -190,3 +190,140 @@ curl -X POST -H "Content-Type: application/json" -d 'myPhp' -k -v -u admin:admin
 **5. Accessing PHP service**
 
 **TODO**
+
+
+Troubleshooting Guide
+-------------
+
+
+**1. How to ssh to master node?**
+
+- Navigate to the cloned repository directory (**SETUP_HOME**)
+```sh
+vagrant ssh master
+```
+
+**2. How to ssh to minion-1 node?**
+
+- Navigate to the cloned repository directory (**SETUP_HOME**)
+```sh
+vagrant ssh minion-1
+```
+
+**3. How to ssh to minion-2 node?**
+
+- Navigate to the cloned repository directory (**SETUP_HOME**)
+```sh
+vagrant ssh minion-2
+```
+
+**4. How to list all the machines in CoreOS cluster?**
+
+- ssh to master node
+```sh
+fleetctl list-machines
+```
+
+- output
+```sh
+core@master ~ $ fleetctl list-machines
+MACHINE		IP		METADATA
+07215782...	172.17.8.100	-
+4b56425a...	172.17.8.102	-
+bf39a4c4...	172.17.8.101	-
+```
+
+
+
+
+
+
+**5. How to list the available replication controllers?**
+
+- ssh to master node
+```sh
+kubecfg list /replicationControllers
+```
+- output
+```sh
+core@master ~ $ kubecfg list /replicationControllers
+ID                  Image(s)                           Selector         Replicas
+test2.php.domain    54.254.64.141:5000/stratos-php     name=php         2
+```
+
+
+**6. How to list the available pods?**
+
+- ssh to master node
+```sh
+kubecfg list /pods
+```
+-output
+```sh
+core@master ~ $ kubecfg list /pods
+ID                                     Image(s)     Host                Labels                              Status
+115bbe15-49ff-11e4-91b7-08002794b041   stratos-php  172.17.8.100/      name=php,replicationController=php   Waiting
+115cc7e9-49ff-11e4-91b7-08002794b041   stratos-php  172.17.8.101/      name=php,replicationController=php   Waiting
+```
+
+**7. How to tail the kubernetes log?**
+
+- ssh to master node
+```sh
+journalctl -f
+```
+
+**8. How to restart the kubernetes scheduler?**
+
+- ssh to master node
+```sh
+systemctl restart scheduler
+```
+
+**9. How to list all the docker containers in a node?**
+
+- ssh to the node
+```sh
+docker ps
+```
+-output
+```sh
+core@master ~ $ docker ps
+CONTAINER ID        IMAGE                        COMMAND                CREATED             STATUS   PORTS
+37e3303eb337        stratos-php:latest           "/bin/sh -c '/usr/lo   2 minutes ago       Up                
+a3f787d0a7ae        kubernetes/pause:latest      "/pause"               2 minutes ago       Up       0.0.0.0:80->80/tcp
+```
+
+**10. How to get the IPAddress of a docker container?**
+
+- ssh to the node
+```sh
+docker inspect CONTAINER-ID | grep IPAddress
+```
+-output
+```sh
+core@master ~ $ docker inspect a3f787d0a7ae | grep IPAddress
+IPAddress": "10.100.56.3",
+```
+
+**10. How to ssh to a docker container?**
+
+- ssh to the node
+```sh
+ssh root@CONTAINER-IPAddress
+```
+enter ```g``` for password
+
+**11. How to kill a docker container?**
+
+- ssh to the node
+```sh
+docker kill CONTAINER-ID
+```
+-output
+```sh
+core@minion-1 ~ $ docker kill 6f5ba525f9ab
+6f5ba525f9ab
+```
+-Another conatiner will be created within few seconds
+
