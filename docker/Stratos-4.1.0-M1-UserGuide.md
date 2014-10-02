@@ -85,13 +85,13 @@ curl -X POST -H "Content-Type: application/json" -d @"kub-register.json" -k  -u 
                   "hostIpAddress" : "172.17.8.100",
                   "property" : [
                       {
-        	             "name": "prop1",
-        	             "value": "val1"
-      	              },
+                         "name": "prop1",
+                         "value": "val1"
+                      },
                       {
-        	             "name": "prop2",
-        	             "value": "val2"
-      	              }
+                         "name": "prop2",
+                         "value": "val2"
+                      }
                   ]
         },
 
@@ -100,49 +100,49 @@ curl -X POST -H "Content-Type: application/json" -d @"kub-register.json" -k  -u 
            "lower": "4000"
         },
 
-        "kubernetesHost": [
-      	      {
+        "kubernetesHosts": [
+              {
                      "hostId" : "KubHostSlave1",
                      "hostname" : "slave1.dev.kubernetes.example.org",
                      "hostIpAddress" : "172.17.8.101",
                      "property" : [
                          {
-        	                 "name": "prop1",
-        	                 "value": "val1"
-      	                 },
+                             "name": "prop1",
+                             "value": "val1"
+                         },
                          {
-        	                 "name": "prop2",
-        	                 "value": "val2"
-      	                 }
+                             "name": "prop2",
+                             "value": "val2"
+                         }
                      ]
                 },
                 {
-                     "hostId" : "KubHostSlave1",
-                     "hostname" : "slave1.dev.kubernetes.example.org",
+                     "hostId" : "KubHostSlave2",
+                     "hostname" : "slave2.dev.kubernetes.example.org",
                      "hostIpAddress" : "172.17.8.102",
                      "property" : [
                          {
-        	                 "name": "prop1",
-        	                 "value": "val1"
-      	                 },
+                             "name": "prop1",
+                             "value": "val1"
+                         },
                          {
-        	                 "name": "prop2",
-        	                 "value": "val2"
-      	                 }
+                             "name": "prop2",
+                             "value": "val2"
+                         }
                      ]
                 }
-  	],
+    ],
 
-  	"property": [
-      	   {
-        	      "name": "prop1",
-        	      "value": "val1"
-      	   },
-      	   {
-        	      "name": "prop2",
-        	      "value": "val2"
-      	   }
-  	]
+    "property": [
+           {
+                  "name": "prop1",
+                  "value": "val1"
+           },
+           {
+                  "name": "prop2",
+                  "value": "val2"
+           }
+    ]
 }
 ```
 * Verify Kubernetes-CoreOS Host Cluster Registration
