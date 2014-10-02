@@ -6,9 +6,9 @@ Table of Content
 
 - [Main Features](#main-features)
 - [Pre-requisite](#pre-requisite)
-- Testing M1
-- Jira List
-- Troubleshooting Guide
+- [Testing M1](#testing-m1)
+- [Jira List](#jira-list)
+- [Troubleshooting Guide](#troubleshooting-guide)
 
 
 Main Features
