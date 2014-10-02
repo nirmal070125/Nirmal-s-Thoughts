@@ -207,7 +207,8 @@ curl -X POST -H "Content-Type: application/json" -d @php-subscription.json -k -v
 ```
 **php-subscription.json**
 
--Don't forgot to replace MB_IP and CEP_IP with your local machine IP in the following json
+- Replace **payload_parameter.MB_IP** and **payload_parameter.CEP_IP** by your local machine IP in the following json;
+
 ```javascript
 {
     "cartridgeType": "php",
