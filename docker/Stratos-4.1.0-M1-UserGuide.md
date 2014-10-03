@@ -245,7 +245,18 @@ curl -X POST -H "Content-Type: application/json" -d 'myphp' -k -v -u admin:admin
 ```
 
 **5. Accessing PHP service**
-**TODO**
+
+Currently accessing via Load Balancer is not supported. You could access the service via **http://<HOST_IP>:<SERVICE_PORT>**.
+
+In order to find the **SERVICE_PORT** issue following command in the Kubernetes Master Node.
+```sh
+kubecfg list services
+```
+
+Then access from one of the following URLs:
+- http://172.17.8.100:<SERVICE_PORT>
+- http://172.17.8.101:<SERVICE_PORT>
+- http://172.17.8.102:<SERVICE_PORT>
 
 Jira List
 ----------
