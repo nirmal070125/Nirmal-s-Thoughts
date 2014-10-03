@@ -97,7 +97,7 @@ curl -X POST -H "Content-Type: application/json" -d @"kub-register.json" -k  -u 
 
         "portRange" : {
            "upper": "5000",
-           "lower": "4000"
+           "lower": "4500"
         },
 
         "kubernetesHosts": [
