@@ -178,11 +178,6 @@ curl -X POST -H "Content-Type: application/json" -d @'php-docker-cartridge.json'
             "protocol": "http",
             "port": "80",
             "proxyPort": "8280"
-         },
-         {
-            "protocol": "https",
-            "port": "443",
-            "proxyPort": "8243"
          }
        ],
        "container": [
