@@ -217,10 +217,14 @@ curl -X POST -H "Content-Type: application/json" -d @php-subscription.json -k -v
              "name": "KUBERNETES_CLUSTER_ID",
              "value": "KubGrp1"
             },
-	    {
+	        {
              "name": "KUBERNETES_REPLICAS_MIN",
              "value": "3"
-            },       
+            },     
+            {
+             "name": "KUBERNETES_REPLICAS_MAX",
+             "value": "20"
+            }, 
             {
              "name": "payload_parameter.MB_IP",
              "value": "10.100.5.84"
