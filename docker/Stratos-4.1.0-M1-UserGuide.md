@@ -212,6 +212,7 @@ curl -X POST -H "Content-Type: application/json" -d @php-subscription.json -k -v
     "cartridgeType": "php",
     "alias": "myphp",
     "commitsEnabled": "false",
+    "autoscalePolicy": "economy",
     "property": [
             {
              "name": "KUBERNETES_CLUSTER_ID",
