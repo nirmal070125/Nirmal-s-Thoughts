@@ -1,0 +1,15 @@
+Using a PPA
+
+You can use WebUpd8 PPA (this will download the required files from Oracle and install JDK 8):
+
+sudo apt-add-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+Are PPA's safe to add to my system and what are some “red flags” to watch out for?
+
+Also ensure your JAVA_HOME variable has been set to:
+
+/usr/lib/jvm/java-8-oracle
+For this you can use the following command (see step 3 of Manual Install to see how to make it permanent):
+
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
