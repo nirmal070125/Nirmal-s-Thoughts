@@ -1,1 +1,1 @@
-$ tar -zxvf backup.tar.gz
+tar -zxvf backup.tar.gz
