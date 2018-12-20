@@ -1,1 +1,9 @@
+ in High Sierra
+ 
+mysql.server status        ## Show status of MySQL
+mysql.server stop          ## Stop MySQL service
+mysql.server start         ## Start MySQL service
+mysql.server restart       ## Restart MySQL service
+
+ 
  sudo /usr/local/mysql/support-files/mysql.server restart
